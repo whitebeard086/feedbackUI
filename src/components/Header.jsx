@@ -10,9 +10,7 @@ const Header = ({ text, bgColor, textColor }) => {
   return (
     <header style={headerStyles}>
       <div className="container">
-        <Link to="/">
-          <h2>{text}</h2>
-        </Link>
+        <h2>{text}</h2>
       </div>
     </header>
   );
