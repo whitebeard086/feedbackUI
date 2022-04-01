@@ -1,3 +1,4 @@
+export { default as AboutIconLink } from "./AboutIconLink";
 export { default as FeedbackForm } from "./FeedbackForm";
 export { default as FeedbackItem } from "./FeedbackItem";
 export { default as FeedbackList } from "./FeedbackList";
