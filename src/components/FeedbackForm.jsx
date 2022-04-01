@@ -19,19 +19,33 @@ const FeedbackForm = () => {
     }
   }, [feedbackEdit]);
 
-  const handleTextChange = e => {
-    if (text === "") {
+  // const handleTextChange = e => {
+  //   if (text === "") {
+  //     setBtnDisabled(true);
+  //     setMessage(null);
+  //   } else if (text !== "" && text.trim().length <= 8) {
+  //     setMessage("Text must be at least 10 characters");
+  //     setBtnDisabled(true);
+  //   } else {
+  //     setMessage(null);
+  //     setBtnDisabled(false);
+  //   }
+
+  //   setText(e.target.value);
+  // };
+
+  const handleTextChange = ({ target: { value } }) => {
+    if (value === "") {
       setBtnDisabled(true);
       setMessage(null);
-    } else if (text !== "" && text.trim().length <= 8) {
+    } else if (value.trim().length < 10) {
       setMessage("Text must be at least 10 characters");
       setBtnDisabled(true);
     } else {
       setMessage(null);
       setBtnDisabled(false);
     }
-
-    setText(e.target.value);
+    setText(value);
   };
 
   const handleSubmit = e => {
@@ -48,6 +62,8 @@ const FeedbackForm = () => {
       } else {
         addFeedback(newFeedback);
       }
+      setBtnDisabled(true);
+      setRating(10);
       setText("");
     }
   };
@@ -56,7 +72,7 @@ const FeedbackForm = () => {
     <Card>
       <form onSubmit={handleSubmit}>
         <h2>How would you rate our services?</h2>
-        <RatingSelect select={rating => setRating(rating)} />
+        <RatingSelect select={setRating} selected={rating} />
         <div className="input-group">
           <input
             onChange={handleTextChange}
